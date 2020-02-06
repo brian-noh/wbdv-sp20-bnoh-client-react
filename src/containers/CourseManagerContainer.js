@@ -114,8 +114,9 @@ class CourseManagerContainer extends React.Component {
                         {
                             this.state.layout === 'grid' &&
                             <CourseGridComponent
-                                courses={this.state.courses}
+
                                 editCourse={this.editCourse}
+                                courses={this.state.courses}
                                 showEditor={this.showEditor}
                                 deleteCourse={this.deleteCourse}/>
                         }
