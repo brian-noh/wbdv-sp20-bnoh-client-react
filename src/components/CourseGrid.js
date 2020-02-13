@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class CourseGrid extends React.Component {
     constructor(props) {
@@ -22,11 +23,9 @@ class CourseGrid extends React.Component {
 
                 {
                     !this.state.editing &&
-                    <a
-                        onClick={this.props.showEditor}
-                        href="#">
+                    <Link to ={`/course-editor/${this.props.course._id}`}>
                         {this.props.course.title}
-                    </a>
+                    </Link>
                 }
                 {this.state.editing &&
                  <input

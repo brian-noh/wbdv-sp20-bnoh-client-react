@@ -3,34 +3,51 @@ import ModuleListComponent from "./ModuleListComponent";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import WidgetComponent from "./WidgetComponent";
+import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import moduleReducer from "../../reducers/moduleReducer"
+import lessonReducer from "../../reducers/lessonReducer";
 
-const CourseEditorComponent = ({hideEditor}) =>
+
+
+const rootReducer = combineReducers({
+    modules: moduleReducer,
+    lessons : lessonReducer
+
+})
+
+const store = createStore(rootReducer)
+
+const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId}) =>
+
+    <Provider store={store}>
     <div>
 
         <div className="row mb-5">
             <div className="col-4">
-                <button onClick={hideEditor}>Close</button>
-                <h3>Course Editor</h3>
+                <button onClick={() => history.push("/")}>Close</button>
+                <h3>Course Editor {match.params.courseId}</h3>
                 <ModuleListComponent
-                    modules={[
-                        {_id:"123", title: "Module 1"},
-                        {_id:"234", title: "Module 2"},
-                        {_id:"456", title: "Module 3"},
-                        {_id:"556", title: "Module 4"},
-                        {_id:"656", title: "Module 5"},
-                        {_id:"646", title: "Module 6"},
-                        {_id:"655", title: "Module 7"}
-                    ]}/>
+                    courseId={match.params.courseId}/>
 
             </div>
             <div className="col-8">
+                {/*<LessonTabs*/}
+                {/*    lessons={[*/}
+                {/*        {_id:"123", title: "Lessons 1"},*/}
+                {/*        {_id:"234", title: "Lessons 2"},*/}
+                {/*        {_id:"456", title: "Lessons 3"},*/}
+                {/*    ]}*/}
+                {/*/>*/}
                 <LessonTabs
+                    moduleId={match.params.moduleId}
+                    courseId={match.params.courseId}
                     lessons={[
-                        {_id:"123", title: "Lessons 1"},
-                        {_id:"234", title: "Lessons 2"},
-                        {_id:"456", title: "Lessons 3"},
-                    ]}/>
-
+                            {_id:"123", title: "Lessons 1"},
+                            {_id:"234", title: "Lessons 2"},
+                            {_id:"456", title: "Lessons 3"}
+                        ]}
+                />
 
                 <TopicPills
                     topics={[
@@ -65,5 +82,6 @@ const CourseEditorComponent = ({hideEditor}) =>
         </div>
 
     </div>
+    </Provider>
 
 export default CourseEditorComponent
