@@ -37,6 +37,11 @@ const lessonReducer = (state = initialState, action) => {
                 lessons: state.lessons.filter(lesson => lesson._id !== action.lessonId)
             }
 
+        // case "UPDATE_LESSON"
+        //     return{
+        //
+        //     }
+
         default:
             return state
     }
