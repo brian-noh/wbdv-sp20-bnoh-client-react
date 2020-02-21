@@ -7,18 +7,20 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import moduleReducer from "../../reducers/moduleReducer"
 import lessonReducer from "../../reducers/lessonReducer";
+import WidgetList from "./WidgetList";
+import widgetReducer from "../../reducers/widgetReducer";
 
 
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons : lessonReducer
-
+    lessons : lessonReducer,
+    widgets: widgetReducer
 })
 
 const store = createStore(rootReducer)
 
-const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId}) =>
+const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId, topicId}) =>
 
     <Provider store={store}>
     <div>
@@ -32,13 +34,7 @@ const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId})
 
             </div>
             <div className="col-8">
-                {/*<LessonTabs*/}
-                {/*    lessons={[*/}
-                {/*        {_id:"123", title: "Lessons 1"},*/}
-                {/*        {_id:"234", title: "Lessons 2"},*/}
-                {/*        {_id:"456", title: "Lessons 3"},*/}
-                {/*    ]}*/}
-                {/*/>*/}
+
                 <LessonTabs
                     moduleId={match.params.moduleId}
                     courseId={match.params.courseId}
@@ -57,20 +53,24 @@ const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId})
 
                     ]}/>
 
+                    <WidgetList topicId={topicId}/>
 
-                <h2>Header Widget
-                    <i className="fa fa-arrow-up wbdv-arrow-icon"></i>
-                    <i className="fa fa-arrow-down wbdv-arrow-icon"></i>
 
-                    <select className="custom-select-sm">
-                        <option value="header">Header</option>
-                        <option value="w1">widget</option>
-                        <option value="w2">widget</option>
-                        <option value="w3">widget</option>
-                    </select>
 
-                </h2>
-                <WidgetComponent/>
+
+                {/*<h2>Header Widget*/}
+                {/*    <i className="fa fa-arrow-up wbdv-arrow-icon"></i>*/}
+                {/*    <i className="fa fa-arrow-down wbdv-arrow-icon"></i>*/}
+
+                {/*    <select className="custom-select-sm">*/}
+                {/*        <option value="header">Header</option>*/}
+                {/*        <option value="w1">widget</option>*/}
+                {/*        <option value="w2">widget</option>*/}
+                {/*        <option value="w3">widget</option>*/}
+                {/*    </select>*/}
+
+                {/*</h2>*/}
+                {/*<WidgetComponent/>*/}
 
 
 

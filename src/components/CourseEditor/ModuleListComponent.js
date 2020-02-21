@@ -12,6 +12,7 @@ import moduleService, {findModuleForCourse} from '../../services/ModuleService';
 import {API_URL} from "../../constants";
 import {updateCourse} from "../../services/CourseService";
 import {Link} from "react-router-dom";
+import LessonTabs from "./LessonTabs";
 
 class ModuleListComponent extends React.Component {
 
@@ -26,6 +27,18 @@ class ModuleListComponent extends React.Component {
         return(
             <div>
                 <ul className="list-group">
+                    <li>
+                        <Link to={`/course-editor/${this.props.courseId}/topics/111`}>
+                            Topic 111
+                        </Link>
+
+                    </li>
+                    <li>
+                        <Link to={`/course-editor/${this.props.courseId}/topics/222`}>
+                            Topic 222
+                        </Link>
+
+                    </li>
 
                     {this.props.modules && this.props.modules.map(module =>
                                                 <li className="list-group-item" key={module._id}>
