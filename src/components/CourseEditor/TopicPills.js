@@ -48,7 +48,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
                                        })),
 
     addTopic: (lessonId) =>
-        fetch(`https://wbdv-generic-server.herokuapp.com/api/001272260/lessons/${lessonId}/topics`, {
+        fetch(`https://wbdv-generic-server.herokuapp.com/api/001272260i/lessons/${lessonId}/topics`, {
             method: 'POST',
             body: JSON.stringify({title: 'New Topic'}),
             headers: {

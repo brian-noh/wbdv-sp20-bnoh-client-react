@@ -170,6 +170,8 @@ class CourseManagerContainer extends React.Component {
                                        {...props}
                                        topicId={props.match.params.topicId}
                                        courseId={props.match.params.courseId}
+                                       moduleId={props.match.params.moduleId}
+                                       lessonId={props.match.params.lessonId}
 
                                    />
 
