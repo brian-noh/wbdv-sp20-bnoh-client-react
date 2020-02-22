@@ -23,7 +23,14 @@ class WidgetList extends React.Component {
 
         }
     }
-
+    save = (widget) => {
+        this.setState(prevState => {
+            return {
+                widget: widget
+            }
+        })
+        this.props.updateWidget(widget.id, widget)
+    }
     render(){
         return(
         <ul>
@@ -50,6 +57,7 @@ class WidgetList extends React.Component {
                                     {
                                         widget.type === "HEADING" &&
                                         <HeadingWidget
+                                            save ={this.save}
                                             widget = {widget}
                                             editing = {widget.id === this.state.widget.id}
                                         />
@@ -57,6 +65,7 @@ class WidgetList extends React.Component {
                                     {
                                         widget.type === "PARAGRAPH" &&
                                         <ParagraphWidget
+                                            save ={this.save}
                                             editing = {widget.id === this.state.widget.id}
                                             widget = {widget}
                                         />
@@ -93,6 +102,20 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const dispatcherToPropertyMapper = (dispatch) => ({
+    updateWidget:(wid,widget) =>
+        fetch(`http://localhost:8080/topics/widgets`, {
+            method: "PUT",
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type':'application/json'
+            }
+        }).then(response => response.json())
+            .then(status => dispatch({
+                                         type:'UPDATE_WIDGET',
+                                         widget: widget
+                                     })),
+
+
     deleteWidget: (wid) =>
         fetch(`http://localhost:8080/topics/widgets`, {
         method: "DELETE"

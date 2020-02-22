@@ -110,35 +110,6 @@ class CourseManagerContainer extends React.Component {
 
                     <Router>
 
-                        <Route path="/course-editor/:topicId"
-                               exact={true}
-                               render={(props) =>
-                                   <CourseEditorComponent
-                                       {...props}
-                                        topicId={props.match.params.topicId}
-                                       courseId={props.match.params.courseId}
-
-                                   />
-
-                               }/>
-                        <Route path="/course-editor/:courseId"
-                               exact={true}
-                               render={(props) =>
-                                   <CourseEditorComponent {...props}
-                                                          courseId={props.match.params.courseId}/>
-
-                               }/>
-
-                        <Route path="/course-editor/module/:moduleId"
-                               exact={true}
-                               render={(props) =>
-                                   <CourseEditorComponent {...props}
-                                                          courseId={props.match.params.courseId}
-                                                          moduleId={props.match.params.moduleId}/>
-
-
-                               }/>
-
                         <Route path="/"
                                exact={true}
                                render={()=>
@@ -154,6 +125,55 @@ class CourseManagerContainer extends React.Component {
                                        courses = {this.state.courses}
 
                                    />}/>
+
+
+                        <Route path="/course-editor/:courseId"
+                               exact={true}
+                               render={(props) =>
+                                   <CourseEditorComponent {...props}
+                                                          courseId={props.match.params.courseId}
+                                                          moduleId={props.match.params.moduleId}
+
+                                   />
+
+                               }/>
+
+                        <Route path="/course-editor/:courseId/modules/:moduleId/lessons"
+                               exact={true}
+                               render={(props) =>
+                                   <CourseEditorComponent {...props}
+                                                          courseId={props.match.params.courseId}
+                                                          moduleId={props.match.params.moduleId}
+                                   hideEditor={this.hideEditor}/>
+
+
+                               }/>
+
+                        <Route path="/course-editor/:courseId/modules/:moduleId/lessons/:lessonId"
+                               exact={true}
+                               render={(props) =>
+                                   <CourseEditorComponent {...props}
+                                                          courseId={props.match.params.courseId}
+                                                          moduleId={props.match.params.moduleId}
+                                                          lessonId={props.match.params.lessonId}
+                                                          hideEditor={this.hideEditor}/>
+
+
+                               }/>
+
+
+
+                        <Route path="/course-editor/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
+                               exact={true}
+                               render={(props) =>
+                                   <CourseEditorComponent
+                                       {...props}
+                                       topicId={props.match.params.topicId}
+                                       courseId={props.match.params.courseId}
+
+                                   />
+
+                               }/>
 
 
                     </Router>

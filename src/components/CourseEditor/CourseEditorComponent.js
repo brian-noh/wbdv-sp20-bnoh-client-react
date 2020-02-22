@@ -9,13 +9,15 @@ import moduleReducer from "../../reducers/moduleReducer"
 import lessonReducer from "../../reducers/lessonReducer";
 import WidgetList from "./WidgetList";
 import widgetReducer from "../../reducers/widgetReducer";
+import topicReducer from "../../reducers/topicReducer";
 
 
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
     lessons : lessonReducer,
-    widgets: widgetReducer
+    widgets: widgetReducer,
+    topics: topicReducer
 })
 
 const store = createStore(rootReducer)

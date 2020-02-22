@@ -45,7 +45,7 @@ class ModuleListComponent extends React.Component {
                                                     <button onClick={() => this.props.deleteModule(module._id)}
                                                             Delete/>
 
-                                                    <Link to ={`/course-editor/module/${module._id}/lessons`}>
+                                                    <Link to ={`/course-editor/${this.props.courseId}/modules/${module._id}/lessons`}>
                                                         {module.title}
                                                     </Link>
 
