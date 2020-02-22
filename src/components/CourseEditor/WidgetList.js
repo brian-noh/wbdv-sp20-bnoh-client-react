@@ -5,7 +5,7 @@ import {ParagraphWidget} from "./widgets/ParagraphWidget";
 
 class WidgetList extends React.Component {
     componentDidMount() {
-        this.props.findWidgetsForTopic(this.props.topicId)
+        this.props.findAllWidgets()
 
     }
 
@@ -141,7 +141,7 @@ const dispatcherToPropertyMapper = (dispatch) => ({
 
     ,
     findAllWidgets: () =>
-        fetch("http://localhost:8080/widgets")
+        fetch("http://localhost:8080/topics/widgets")
             .then(response => response.json())
             .then(actualWidgets => dispatch({
                                                 type: "FIND_ALL_WIDGETS",

@@ -55,7 +55,6 @@ class ModuleListComponent extends React.Component {
                                                         this.setState({
                                                                           editing: true
                                                                       })
-                                                        // this.props.updateModule(this.props.courseId, module)
                                                     }}>Edit</button>
 
                                                     <button> Save</button>
