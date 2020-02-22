@@ -46,14 +46,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
                                            type: 'FIND_TOPICS_FOR_LESSONS',
                                            topics: topics
                                        })),
-    // updateTopic: async (topic) => {
-    //     const actualTopic = await TopicService.updateTopic(topic)
-    //     dispatcher({
-    //                    type: 'UPDATE_Topic',
-    //                    topic: actualTopic,
-    //                    topicId: actualTopic._id
-    //                })
-    // },
+
     addTopic: (lessonId) =>
         fetch(`https://wbdv-generic-server.herokuapp.com/api/001272260/lessons/${lessonId}/topics`, {
             method: 'POST',

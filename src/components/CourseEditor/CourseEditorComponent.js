@@ -48,12 +48,11 @@ const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId, 
                 />
 
                 <TopicPills
-                    topics={[
-                        {_id:"123", title: "Topic 1"},
-                        {_id:"234", title: "Topic 2"},
-                        {_id:"456", title: "Topic 3"},
+                    moduleId={match.params.moduleId}
+                    courseId={match.params.courseId}
+                    lessonId={match.params.lessonId}
 
-                    ]}/>
+                    />
 
                     <WidgetList topicId={topicId}/>
 
