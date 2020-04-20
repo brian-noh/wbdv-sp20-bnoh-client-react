@@ -53,6 +53,7 @@ const CourseEditorComponent = ({hideEditor, match, history, courseId, moduleId, 
                     lessonId={match.params.lessonId}
 
 
+
                     />
 
                     <WidgetList topicId={topicId}/>

@@ -20,13 +20,13 @@ class TopicPills extends React.Component {
             <ul >
                 {
                     this.props.topics && this.props.topics.map(topic =>
-                                                                   <li className="nav-item"
-                                                                       key={topic._id}>
-                                                                       <Link to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${topic._id}`}>
-                                                                           {topic.title}
-                                                                       </Link>
+                        <li className="nav-item"
+                        key={topic._id}>
+                       <Link to={`/course-editor/${this.props.courseId}/modules/${this.props.moduleId}/lessons/${this.props.lessonId}/topics/${topic._id}`}>
+                           {topic.title}
+                       </Link>
 
-                                                                   </li>
+                        </li>
                     )
                 }
                 <button onClick={() => this.props.addTopic(this.props.lessonId)}>+</button>
