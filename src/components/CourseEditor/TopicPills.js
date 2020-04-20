@@ -61,6 +61,14 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
                                      topic: actualTopic
                                  })),
 
+    findAllTopics: () =>
+        fetch("https://localhost:8080/api/topics")
+            .then(res=>res.json())
+            .then(topics=>dispatcher({
+                type: "SET_TOPICS",
+                topics: topics
+                                     }))
+
 })
 
 export default connect(

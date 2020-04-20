@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux"
 import HeadingWidget from "./widgets/HeadingWidget";
 import {ParagraphWidget} from "./widgets/ParagraphWidget";
+import ImageWidget from "./widgets/ImageWidget";
+import ListWidget from "./widgets/ListWidget";
 
 class WidgetList extends React.Component {
     componentDidMount() {
@@ -37,45 +39,50 @@ class WidgetList extends React.Component {
             <ul>
                 {
                     this.props.widgets && this.props.widgets.map(widget =>
-                                                                     <li key={widget.id}>
-                                                                         <button
-                                                                             onClick={() => this.props.deleteWidget(
-                                                                                 widget.id)}>
-                                                                             X
-                                                                         </button>
-                                                                         <button
-                                                                             onClick={() => this.setState(
-                                                                                 {
-                                                                                     widget: widget
+                        <li key={widget.id}>
+                             <button
+                                 onClick={() => this.props.deleteWidget(
+                                     widget.id)}>
+                                 X
+                             </button>
+                             <button
+                                 onClick={() => this.setState(
+                                     {
+                                         widget: widget
 
-                                                                                 })}>
-                                                                             ...
-                                                                         </button>
-                                                                         <h3> Common to all
-                                                                             widgets </h3>
-                                                                         {
-                                                                             widget.type
-                                                                             === "HEADING" &&
-                                                                             <HeadingWidget
-                                                                                 save={this.save}
-                                                                                 widget={widget}
-                                                                                 editing={widget.id
-                                                                                          === this.state.widget.id}
-                                                                             />
-                                                                         }
-                                                                         {
-                                                                             widget.type
-                                                                             === "PARAGRAPH" &&
-                                                                             <ParagraphWidget
-                                                                                 save={this.save}
-                                                                                 editing={widget.id
-                                                                                          === this.state.widget.id}
-                                                                                 widget={widget}
-                                                                             />
-                                                                         }
+                                     })}>
+                                 ...
+                             </button>
+                             <h3> Common to all
+                                 widgets </h3>
+                             {
+                                 widget.type
+                                 === "HEADING" &&
+                                 <HeadingWidget
+                                     save={this.save}
+                                     widget={widget}
+                                     editing={widget.id
+                                              === this.state.widget.id}
+                                 />
+                             }
+                             {
+                                 widget.type
+                                 === "PARAGRAPH" &&
+                                 <ParagraphWidget
+                                     save={this.save}
+                                     editing={widget.id
+                                              === this.state.widget.id}
+                                     widget={widget}
+                                 />
+                             }
+                            {widget.type === "IMAGE" && <ImageWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
+                            {widget.type === "LIST" && <ListWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
 
-                                                                         {widget.title}
-                                                                     </li>
+
+
+
+                            {widget.title}
+                         </li>
                     )
                 }
                 <li>
